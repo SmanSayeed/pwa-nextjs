@@ -13,11 +13,11 @@ const AddToOtherBrowser = dynamic(() => import('./AddToOtherBrowser'), { loading
 
 import useUserAgent from '../../hooks/useUserAgent';
 
-type AddToHomeScreenPromptType = 'safari' | 'chrome' | 'firefox' | 'other' | 'firefoxIos' | 'chromeIos' | 'samsung' | '';
+// type AddToHomeScreenPromptType = 'safari' | 'chrome' | 'firefox' | 'other' | 'firefoxIos' | 'chromeIos' | 'samsung' | '';
 const COOKIE_NAME = 'addToHomeScreenPrompt';
 
 export default function AddToHomeScreen() {
-    const [displayPrompt, setDisplayPrompt] = useState<AddToHomeScreenPromptType>('');
+    const [displayPrompt, setDisplayPrompt] = useState('');
     const { userAgent, isMobile, isStandalone, isIOS } = useUserAgent();
 
     const closePrompt = () => {

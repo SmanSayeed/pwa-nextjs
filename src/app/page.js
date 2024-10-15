@@ -1,12 +1,12 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import AddToHomeScreen from '../components/PWAComponents/AddToHomeScreen'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
 
 
 import useUserAgent from '../hooks/useUserAgent'
+import AddToHomeScreen from '../components/PWAComponents/AddToHomeScreen'
 
 export default function Home() {
   const [welcomeMessage, setWelcomeMessage] = useState('Checking device...');

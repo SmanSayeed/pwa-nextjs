@@ -3,7 +3,7 @@
 import React from "react";
 import AddToMobileChrome from "./PWAComponents/AddToMobileChrome";
 import useUserAgent from '../hooks/useUserAgent';
-import AddToHomeScreen from "./PWAComponents/AddToHomeScreen";
+// import AddToHomeScreen from "/PWAComponents/AddToHomeScreen";
 
 export default function RootLayoutClient({ children }) {
 
@@ -30,8 +30,8 @@ export default function RootLayoutClient({ children }) {
       <div className="w-[100%] h-[100px] bg-blue-800 text-white flex justify-between items-center">
        <h2>PWA Example</h2>
        <div className="">
-       {userAgentString && <p className="text-center text-xs text-gray-400">{userAgentString}</p>}
-      <AddToHomeScreen />
+       {/* {userAgentString && <p className="text-center text-xs text-gray-400">{userAgentString}</p>}
+      <AddToHomeScreen /> */}
        </div>
       </div>
       <div className="w-[100%] h-[80vh]">{children}</div>

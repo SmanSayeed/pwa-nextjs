@@ -3,12 +3,8 @@ import Link from 'next/link'
 
 import { FaTimes } from 'react-icons/fa'
 
-interface Props {
-    closePrompt: () => void;
-    doNotShowAgain: () => void;
-}
 
-export default function AddToOtherBrowser(props: Props) {
+export default function AddToOtherBrowser(props) {
     const { closePrompt, doNotShowAgain } = props;
     const searchUrl = `https://www.google.com/search?q=add+to+home+screen+for+common-mobile-browsers`;
 
