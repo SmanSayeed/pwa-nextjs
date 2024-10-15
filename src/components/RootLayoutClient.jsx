@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import AddToMobileChrome from "../PWAComponents/AddToMobileChrome";
-import useUserAgent from '../../hooks/useUserAgent';
-import AddToHomeScreen from "../PWAComponents/AddToHomeScreen";
+import AddToMobileChrome from "./PWAComponents/AddToMobileChrome";
+import useUserAgent from '../hooks/useUserAgent';
+import AddToHomeScreen from "./PWAComponents/AddToHomeScreen";
 
 export default function RootLayoutClient({ children }) {
 
