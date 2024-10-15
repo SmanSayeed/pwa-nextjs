@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function InstallPWAButton() {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [isInstallable, setIsInstallable] = useState(false);
     const [isIOS, setIsIOS] = useState(false);
     const [isInStandaloneMode, setIsInStandaloneMode] = useState(false);
+    const [showToast, setShowToast] = useState(false); // State for showing toast
 
     useEffect(() => {
         // Check if the app is running in standalone mode (PWA already installed)
-        if (window.matchMedia('(display-mode: standalone)').matches) {
-            setIsInStandaloneMode(true);
-        }
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+        setIsInStandaloneMode(isStandalone);
 
         // Detect iOS
         const userAgent = window.navigator.userAgent;
@@ -31,12 +31,25 @@ export default function InstallPWAButton() {
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
                     console.log('User accepted the install prompt');
+                    showToastMessage(); // Show toast after installation
                 } else {
                     console.log('User dismissed the install prompt');
                 }
                 setDeferredPrompt(null); // Clear the deferred prompt
             });
         }
+    };
+
+    const handleOpenAppClick = () => {
+        // This can navigate to the app's home page if it's installed
+        window.location.href = '/';
+    };
+
+    const showToastMessage = () => {
+        setShowToast(true); // Show the toast
+        setTimeout(() => {
+            setShowToast(false); // Hide toast after 3 seconds
+        }, 3000);
     };
 
     const renderIOSInstallInstructions = () => (
@@ -49,17 +62,37 @@ export default function InstallPWAButton() {
         </div>
     );
 
-    if (isInStandaloneMode) {
-        return null; // Don't show install button if app is already installed
-    }
-
     return (
         <div>
-            {isInstallable && !isIOS && (
-                <button className='p-2 bg-orange-500 text-orange-100 rounded hover:bg-orange-600 hover:text-orange-200 text-sm font-bold ' onClick={handleInstallClick}>Install App</button>
+            {/* Show Install button if app is not in standalone mode */}
+            {isInstallable && !isInStandaloneMode && !isIOS && (
+                <button
+                    onClick={handleInstallClick}
+                    className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded"
+                >
+                    Install App
+                </button>
             )}
 
+            {/* Show iOS install instructions */}
             {isIOS && !isInStandaloneMode && renderIOSInstallInstructions()}
+
+            {/* Show Open App button if app is already installed */}
+            {isInStandaloneMode && (
+                <button
+                    onClick={handleOpenAppClick}
+                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+                >
+                    Open App
+                </button>
+            )}
+
+            {/* Toast message */}
+            {showToast && (
+                <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white py-2 px-4 rounded shadow-lg">
+                    App installed successfully!
+                </div>
+            )}
         </div>
     );
 }

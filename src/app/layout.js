@@ -14,9 +14,9 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "MovieMaster",
+  title: "CliniqueX",
   description:
-    "MovieMaster PWA helps you find the latest movies with an easy search by genre, year, and more. It works smoothly on any device, even offline, giving you a great movie browsing experience.",
+    "Cliniquex helps you to track queue in any clinique or hospital",
   manifest: "/web.manifest",
 };
 

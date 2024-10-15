@@ -1,5 +1,5 @@
-const CACHE_NAME = "MOVIE_MASTER_V1";
-const DB_NAME = "MovieMaster";
+const CACHE_NAME = "CliniqueX-v1.0.0";
+const DB_NAME = "CliniqueX";
 const DB_VERSION = 1;
 const DB_STORE_NAME = "myStore";
 
@@ -7,7 +7,7 @@ async function cacheCoreAssets() {
   const cache = await caches.open(CACHE_NAME);
   return await cache.addAll([
     "/",
-    "/imdb-logo.svg",
+    "/icon.svg",
     "/rotten-tomatoes-logo.svg",
     "/fallback",
   ]);
